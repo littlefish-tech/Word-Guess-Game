@@ -49,43 +49,46 @@ var wordlist = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
     }
     console.log(answerArray.length)
 
-    // while (remainingLetters > 0) {
-    var mistakes = 0;
+    var mistake = 0;
     var maxMistakes = 5;
+ 
 
     document.onkeyup = function(event) {
-var letter = event.key;
-var isMistake = true;
-if (mistakes >= maxMistakes){
-    console.log("Game Over: Word was " + word)
-    return
-}
-for (var i = 0; i < word.length; i++){
-    if (letter == word[i]){
-        isMistake = false;
-    console.log(word[i])
-    answerArray[i]=letter
+    var letter = event.key;
+    for (i=0; i<word.length; i++){
+        if(letter==word[i]){
+            console.log(letter + " is in word @"+ i)
+            answerArray[i]=word[i]
+        }
     }
-
-
+    var correct =0;
+    for (i=0;i<word.length; i++){
+        if(answerArray[i]==word[i]){
+            correct++
+        }
+        
+    }
+    if(correct == word.length){
+            console.log("I win!!")
+        }
     
-}
-    var correct = 0;
-for (var i=0; i<word.length; i++){
-    if (answerArray[i]==word[i]){
-        correct++;
+        var isMistake = true;  
+    for (i=0;i<word.length; i++){
+        if(letter == word[i]){
+        isMistake = false; 
+        }
     }
-}
-if (correct == word.length) {
-    console.log("You Win!!")
-}
-if (isMistake == true) {
-    mistakes++
-    if (mistakes >= maxMistakes){
-        console.log("You lose")
+    if (isMistake == true) {
+        mistake++;{
+            if (mistake >= 5){
+                console.log("You lose!!")
+            }
+        }
+    
     }
-}
-        console.log(answerArray.join("_"));
+
+
+    console.log(answerArray.join("_"));
 }
 
 
