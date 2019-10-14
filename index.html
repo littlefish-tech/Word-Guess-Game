@@ -20,11 +20,11 @@
 <div class="media border p-3">
         <img src="assets/images/2-WordGuess.png" alt="Hangman"  style="size: 100%;" class="center;">
         <div class="media-body">
-          <h4>Word Guess Game</h4>
-          <p id="directtions-text">Press any key to start playing!</p>
-          <p id="userchoice-text"></p>
-          <p id="wins-text"></p>
-          <p id="losses-text"></p>
+          <h2>Word Guess Game</h2>
+          <h3>Days of the Week!</h3>
+          <p>Your Guesses: <span id="directions-text"></span></p>
+        
+        <p>Guesses left: <span id="userchoice-text"></span></p>
         </div>
 </div>
 <!-- <div class="jumbotron jumbotron-fluid">
@@ -42,10 +42,10 @@ var wordlist = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
     // console.log(randomIndex)
     var word = wordlist[randomIndex]
     // console.log(word)
-
+    
     var answerArray = [];
     for (var i=0; i < word.length; i++) {
-        answerArray.push("*");
+        document.getElementById("directions-text").innerHTML =answerArray.push("_");
     }
     console.log(answerArray.length)
 
@@ -85,7 +85,7 @@ if (isMistake == true) {
         console.log("You lose")
     }
 }
-        console.log(answerArray.join("_"));
+        console.log(answerArray.join(" "));
 }
 
 
