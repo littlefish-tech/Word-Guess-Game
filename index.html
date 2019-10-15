@@ -45,13 +45,13 @@ var wordlist = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
     
     var answerArray = [];
     for (var i=0; i < word.length; i++) {
-        document.getElementById("directions-text").innerHTML =answerArray.push("_");
+       answerArray.push("_");
     }
     console.log(answerArray.length)
 
     // while (remainingLetters > 0) {
     var mistakes = 0;
-    var maxMistakes = 5;
+    var maxMistakes = 12;
 
     document.onkeyup = function(event) {
 var letter = event.key;
@@ -65,9 +65,10 @@ for (var i = 0; i < word.length; i++){
         isMistake = false;
     console.log(word[i])
     answerArray[i]=letter
+    document.getElementById("directions-text").innerHTML=letter
     }
 
-
+    document.getElementById("userchoice-text").innerHTML = mistakes;
     
 }
     var correct = 0;
