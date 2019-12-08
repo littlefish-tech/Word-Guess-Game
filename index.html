@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
 <!-- <div class="jumbotron jumbotron-fluid bg-info mb-0" style="background-image: url(assets/images/2-WordGuess.png); max-width: 100%; height: 100%;">
         <div class="container">
             <h1 class="display-4 text-light">Bootstrap is awesome!</h1>
@@ -23,6 +22,7 @@
           <h2>Word Guess Game</h2>
           <h3>Days of the Week!</h3>
           <p>Your Guesses: <span id="directions-text"></span></p>
+          <p>The word you are guessing: <span id="word-text"></span></p>
         
         <p>Guesses left: <span id="userchoice-text"></span></p>
         </div>
@@ -35,7 +35,7 @@
 </div> -->
 <script>
 // set a list of word
-var wordlist = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+var wordlist = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 // The computer randomly pick a word
     var randomIndex = Math.floor(Math.random()*wordlist.length);
@@ -47,6 +47,7 @@ var wordlist = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
     for (var i=0; i < word.length; i++) {
        answerArray.push("_");
     }
+    document.getElementById("word-text").innerHTML = answerArray.join(" ");
     console.log(answerArray.length)
 
     // while (remainingLetters > 0) {
@@ -54,7 +55,7 @@ var wordlist = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
     var maxMistakes = 12;
 
     document.onkeyup = function(event) {
-var letter = event.key;
+var letter = event.key.toLowerCase();
 var isMistake = true;
 if (mistakes >= maxMistakes){
     console.log("Game Over: Word was " + word)
@@ -65,7 +66,8 @@ for (var i = 0; i < word.length; i++){
         isMistake = false;
     console.log(word[i])
     answerArray[i]=letter
-    document.getElementById("directions-text").innerHTML=letter
+    document.getElementById("directions-text").innerHTML = letter;
+    document.getElementById("word-text").innerHTML = answerArray.join(" ");
     }
 
     document.getElementById("userchoice-text").innerHTML = mistakes;
@@ -79,11 +81,13 @@ for (var i=0; i<word.length; i++){
 }
 if (correct == word.length) {
     console.log("You Win!!")
+    document.getElementById("userchoice-text").textContent = "You Win The Game!!" ;
 }
 if (isMistake == true) {
     mistakes++
     if (mistakes >= maxMistakes){
         console.log("You lose")
+        document.getElementById("userchoice-text").textContent = "Sorry, you lose." ;
     }
 }
         console.log(answerArray.join(" "));
@@ -91,6 +95,5 @@ if (isMistake == true) {
 
 
 </script>
-    
 </body>
 </html>
